@@ -2,7 +2,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-// Add company logo information to the experiences array
 const experiences = [
   {
     role: "Test Engineer",
@@ -16,7 +15,7 @@ const experiences = [
       "Managed defect tracking and reporting with focus on monitoring deliverables"
     ],
     tags: ["Functional Testing", "BFSI", "Defect Management", "Manual Testing"],
-    logo: "https://images.unsplash.com/photo-1586396874372-2c584a53d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+    logo: "/lovable-uploads/258745cf-aa1e-4ebc-924e-46746d53bc43.png"
   },
   {
     role: "QA Analyst",
@@ -30,7 +29,7 @@ const experiences = [
       "Automated applications enhancing efficiency and accuracy"
     ],
     tags: ["TestNG", "Selenium", "Java", "Automation Framework", "UAT"],
-    logo: "https://images.unsplash.com/photo-1561736778-92e52a7769ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+    logo: "/lovable-uploads/3610bda2-e848-48f0-a7e2-90b709be7f21.png"
   },
   {
     role: "Specialist-Test Quality Assurance",
@@ -44,7 +43,7 @@ const experiences = [
       "Collaborated with developers to address technical issues and track bugs"
     ],
     tags: ["BDD Cucumber", "Regression Testing", "UAT", "Banking Domain"],
-    logo: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+    logo: "/lovable-uploads/9434bf16-897a-48ad-bd23-0d8e459ad21a.png"
   },
   {
     role: "Test Analyst",
@@ -58,7 +57,7 @@ const experiences = [
       "Generated test closure reports and coordinated with developers to resolve issues"
     ],
     tags: ["Appian", "JIRA", "Bitbucket", "Hybrid Framework", "Banking"],
-    logo: "https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+    logo: "/lovable-uploads/7bedda01-3e8d-43ce-a310-753036ebc425.png"
   }
 ];
 
@@ -78,11 +77,11 @@ const Experience = () => {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border border-muted">
+                    <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border border-muted bg-white flex items-center justify-center p-1">
                       <img 
                         src={exp.logo} 
                         alt={`${exp.company} logo`} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div>

@@ -2,6 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+// Add company logo information to the experiences array
 const experiences = [
   {
     role: "Test Engineer",
@@ -14,7 +15,8 @@ const experiences = [
       "Executed system test suite ensuring comprehensive testing coverage",
       "Managed defect tracking and reporting with focus on monitoring deliverables"
     ],
-    tags: ["Functional Testing", "BFSI", "Defect Management", "Manual Testing"]
+    tags: ["Functional Testing", "BFSI", "Defect Management", "Manual Testing"],
+    logo: "https://images.unsplash.com/photo-1586396874372-2c584a53d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
   },
   {
     role: "QA Analyst",
@@ -27,7 +29,8 @@ const experiences = [
       "Created and implemented comprehensive test plans and test cases",
       "Automated applications enhancing efficiency and accuracy"
     ],
-    tags: ["TestNG", "Selenium", "Java", "Automation Framework", "UAT"]
+    tags: ["TestNG", "Selenium", "Java", "Automation Framework", "UAT"],
+    logo: "https://images.unsplash.com/photo-1561736778-92e52a7769ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
   },
   {
     role: "Specialist-Test Quality Assurance",
@@ -40,7 +43,8 @@ const experiences = [
       "Performed Functionality, Sanity, UAT, and Regression Testing",
       "Collaborated with developers to address technical issues and track bugs"
     ],
-    tags: ["BDD Cucumber", "Regression Testing", "UAT", "Banking Domain"]
+    tags: ["BDD Cucumber", "Regression Testing", "UAT", "Banking Domain"],
+    logo: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
   },
   {
     role: "Test Analyst",
@@ -53,7 +57,8 @@ const experiences = [
       "Executed test scripts via command-line operations using Seleniumbox",
       "Generated test closure reports and coordinated with developers to resolve issues"
     ],
-    tags: ["Appian", "JIRA", "Bitbucket", "Hybrid Framework", "Banking"]
+    tags: ["Appian", "JIRA", "Bitbucket", "Hybrid Framework", "Banking"],
+    logo: "https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
   }
 ];
 
@@ -72,9 +77,18 @@ const Experience = () => {
             <Card key={index} className="animate-fadeIn" style={{ animationDelay: `${0.1 * index}s` }}>
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold">{exp.role}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border border-muted">
+                      <img 
+                        src={exp.logo} 
+                        alt={`${exp.company} logo`} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold">{exp.role}</h3>
+                      <p className="text-muted-foreground">{exp.company}</p>
+                    </div>
                   </div>
                   <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
                     {exp.period}

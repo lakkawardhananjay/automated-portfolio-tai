@@ -1,0 +1,49 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch (main)
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write # Allow write access to repository contents (push to gh-pages)
+  pages: write      # Allow deployment to GitHub Pages (might be needed depending on repo settings)
+  id-token: write   # Allow authentication using OIDC (OpenID Connect) - good practice
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # Output the deployed URL
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4 # Use latest version
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4 # Use latest version
+        with:
+          node-version: 18 # Or your required Node.js version
+          cache: 'npm' # Cache npm dependencies
+
+      - name: Install Dependencies 📦
+        run: npm ci # Use 'ci' for cleaner installs in CI/CD
+
+      - name: Build Application 🏗️
+        run: npm run build # Assumes 'build' script generates output in 'dist' or 'build' folder
+
+      # --- Deployment Step ---
+      # This uses the popular JamesIves action. It automatically handles
+      # creating/updating the gh-pages branch and pushing the built files.
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder the action should deploy (check your build output, common ones are 'dist', 'build')
+          # token: ${{ secrets.GITHUB_TOKEN }} # Default, no need to specify explicitly unless using a PAT
+          # branch: gh-pages # Default is gh-pages
+          # clean: true # Automatically remove deleted files from the deploy branch

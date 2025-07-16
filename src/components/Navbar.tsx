@@ -41,38 +41,42 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="#"
+            <a
+              href="#"
               className="text-foreground hover:text-primary transition-colors"
             >
               Home
-            </Link>
-            <Link
-              to="#skills"
+            </a>
+            <a
+              href="#skills"
               className="text-foreground hover:text-primary transition-colors"
+              onClick={e => { e.preventDefault(); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               Skills
-            </Link>
-            <Link
-              to="#experience"
+            </a>
+            <a
+              href="#experience"
               className="text-foreground hover:text-primary transition-colors"
+              onClick={e => { e.preventDefault(); document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               Experience
-            </Link>
-            <Link
-              to="#services"
+            </a>
+            <a
+              href="#services"
               className="text-foreground hover:text-primary transition-colors"
+              onClick={e => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               Services
-            </Link>
-            <Link
-              to="#testimonials"
+            </a>
+            <a
+              href="#testimonials"
               className="text-foreground hover:text-primary transition-colors"
+              onClick={e => { e.preventDefault(); document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               Testimonials
-            </Link>
+            </a>
             <Button asChild>
-              <Link to="#contact">Contact</Link>
+              <a href="mailto:payal.lakkawar5@gmail.com">Contact</a>
             </Button>
           </nav>
 
@@ -95,47 +99,47 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden pt-4 pb-2 animate-fadeIn">
             <nav className="flex flex-col space-y-4">
-              <Link
-                to="#"
+              <a
+                href="#"
                 className="py-2 text-foreground hover:text-primary transition-colors"
                 onClick={toggleMenu}
               >
                 Home
-              </Link>
-              <Link
-                to="#skills"
+              </a>
+              <a
+                href="#skills"
                 className="py-2 text-foreground hover:text-primary transition-colors"
-                onClick={toggleMenu}
+                onClick={e => { e.preventDefault(); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }); toggleMenu(); }}
               >
                 Skills
-              </Link>
-              <Link
-                to="#experience"
+              </a>
+              <a
+                href="#experience"
                 className="py-2 text-foreground hover:text-primary transition-colors"
-                onClick={toggleMenu}
+                onClick={e => { e.preventDefault(); document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }); toggleMenu(); }}
               >
                 Experience
-              </Link>
-              <Link
-                to="#services"
+              </a>
+              <a
+                href="#services"
                 className="py-2 text-foreground hover:text-primary transition-colors"
-                onClick={toggleMenu}
+                onClick={e => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); toggleMenu(); }}
               >
                 Services
-              </Link>
-              <Link
-                to="#testimonials"
+              </a>
+              <a
+                href="#testimonials"
                 className="py-2 text-foreground hover:text-primary transition-colors"
-                onClick={toggleMenu}
+                onClick={e => { e.preventDefault(); document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' }); toggleMenu(); }}
               >
                 Testimonials
-              </Link>
+              </a>
               <Button
                 asChild
                 className="w-full"
                 onClick={toggleMenu}
               >
-                <Link to="#contact">Contact</Link>
+                <a href="mailto:payal.lakkawar5@gmail.com">Contact</a>
               </Button>
             </nav>
           </div>

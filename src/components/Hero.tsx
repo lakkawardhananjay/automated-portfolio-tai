@@ -22,12 +22,14 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Button asChild>
-                <Link to="#contact">
+                <a href="mailto:payal.lakkawar5@gmail.com">
                   Hire Me <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </a>
               </Button>
-              <Button variant="outline">
-                Download CV <Download className="ml-2 h-4 w-4" />
+              <Button variant="outline" asChild>
+                <a href="/resume/5_payal_QA_anlayst%20(1).pdf" download>
+                  Download CV <Download className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

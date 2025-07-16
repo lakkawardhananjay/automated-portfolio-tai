@@ -1,16 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Mail, 
-  Phone, 
-  Send, 
-  Linkedin, 
-  Github 
-} from "lucide-react";
+import { Mail, Phone, Send, Linkedin, Github } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 const Contact = () => {
   const { toast } = useToast();
@@ -28,22 +22,39 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // This would be replaced with actual form submission logic
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you as soon as possible.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+
+    // EmailJS Service and Template IDs
+    const serviceID = "your_email_service_id";
+    const templateID = "your_email_template_id";
+    const userID = "your_emailjs_user_id";  // You can get this from EmailJS dashboard
+
+    // Sending Email using EmailJS
+    emailjs
+      .sendForm(serviceID, templateID, e.target, userID)
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast({
+            title: "Message Sent!",
+            description: "Thank you for reaching out. I'll get back to you as soon as possible.",
+          });
+          // Reset form after submission
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: ""
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          toast({
+            title: "Error",
+            description: "There was an error sending your message. Please try again later.",
+            variant: "destructive",
+          });
+        }
+      );
   };
 
   return (
@@ -53,7 +64,7 @@ const Contact = () => {
         <p className="text-muted-foreground mb-12 max-w-3xl">
           Interested in working together? Fill out the form below and I'll get back to you promptly.
         </p>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -86,7 +97,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium">
                   Subject
@@ -100,7 +111,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium">
                   Message
@@ -115,55 +126,48 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <Button type="submit" className="w-full md:w-auto">
                 Send Message <Send className="ml-2 h-4 w-4" />
               </Button>
             </form>
           </div>
-          
+
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
               <ul className="space-y-4">
                 <li className="flex items-center">
                   <Mail className="h-5 w-5 text-primary mr-3" />
-                  <a href="mailto:payal.lakkawar@example.com" className="hover:text-primary">
-                    payal.lakkawar@example.com
+                  <a href="mailto:payal.lakkawar5@gmail.com" className="hover:text-primary">
+                    payal.lakkawar5@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center">
                   <Phone className="h-5 w-5 text-primary mr-3" />
-                  <a href="tel:+1234567890" className="hover:text-primary">
-                    +1 234 567 890
+                  <a href="tel:+91 9518965063" className="hover:text-primary">
+                    +91 9518965063
                   </a>
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-semibold mb-4">Connect With Me</h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/payal-lakkawar-661267178/"
                   className="h-10 w-10 flex items-center justify-center rounded-full bg-secondary hover:bg-primary hover:text-white transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a
-                  href="#"
-                  className="h-10 w-10 flex items-center justify-center rounded-full bg-secondary hover:bg-primary hover:text-white transition-colors"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-semibold mb-4">Availability</h3>
               <p className="text-muted-foreground">
-                Currently available for freelance projects and remote QA opportunities.
-                Response time: Within 24 hours.
+                I am currently open to new opportunities and collaborations.
               </p>
             </div>
           </div>
